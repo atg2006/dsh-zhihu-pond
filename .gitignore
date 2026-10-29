@@ -1,0 +1,16 @@
+# 依赖
+node_modules/
+
+# 测试产物 / 临时目录
+.pw/
+.qrhome/
+.testhome/
+*.png
+*.log
+
+# 插件自己的运行时数据（不该进仓库）
+cookie.txt
+config.local.json
+
+# SSH 密钥（只在本机）
+.git-keys/
