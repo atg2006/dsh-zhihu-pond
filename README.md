@@ -1,4 +1,4 @@
-# dsh-feed-pond
+﻿# dsh-zhihu-pond
 
 **只读**信息流插件：把知乎（以后还想接微信公众号、小红书）的公开内容读成文本交给 DSH。
 不评论、不点赞、不发布、不改动账号。
@@ -42,7 +42,7 @@ dsh plugin --profile desktop add link:<本目录>
 
 ## 配置
 
-落在 `$DSH_HOME/feed-pond/config.json`（默认 `C:\Users\<你>\.dsh\feed-pond\config.json`），
+落在 `$DSH_HOME/zhihu-pond/config.json`（默认 `C:\Users\<你>\.dsh\zhihu-pond\config.json`），
 用 `feed_config` 改最省事。cookie 只存本地，不回显全文。
 
 ```json

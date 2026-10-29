@@ -1,5 +1,5 @@
 /**
- * dsh-feed-pond —— host 半端
+ * dsh-zhihu-pond —— host 半端
  * ============================================================================
  * 一个**只读**信息流插件：把知乎的公开内容读成文本交给 DSH。
  * 只读、不评论、不点赞、不发布、不改账号。
@@ -16,7 +16,7 @@
  *   dsh plugin --profile desktop add link:<本目录>
  *   装完从托盘彻底退出 DSH 再开。
  *
- * 家里（$DSH_HOME/feed-pond/）落什么：
+ * 家里（$DSH_HOME/zhihu-pond/）落什么：
  *   config.json   配置（cookie 存这里，不进日志）
  *   state.json    今日用量 + 读过哪些，读满就拒绝
  * ============================================================================
@@ -30,7 +30,7 @@ import { readConfig, writeConfig, describeConfig } from './lib/config.mjs'
 import { quota, consume, markSeen, stateError } from './lib/state.mjs'
 import { load as loadProvider, catalog } from './lib/providers/index.mjs'
 
-export const name = 'feed-pond'
+export const name = 'zhihu-pond'
 
 /** 只要工具注册表 */
 export const inject = ['tools']
@@ -59,8 +59,19 @@ function needQuota(cfg) {
 }
 
 export function apply(ctx) {
+  /**
+   * ⚠ 参数一律包成**完整 JSON Schema**（type / properties / additionalProperties）。
+   * 裸的字段表（{ name: { type:'string' } }）在宿主没自动补 type 的时候，
+   * 发给模型接口就是 "type: null"，整个会话所有界面一起报错 —— 这个坑踩过一次。
+   */
+  const objectSchema = (params) => {
+    if (params && params.type === 'object') return params
+    return { type: 'object', properties: params || {}, additionalProperties: false }
+  }
+
   const tool = (spec) => ctx.tools.register(defineTool({
     ...spec,
+    parameters: objectSchema(spec.parameters),
     output: textOutput,
     async execute(args) { return safe(await spec.execute(args || {})) },
   }))

@@ -1,5 +1,5 @@
 {
-  "name": "dsh-feed-pond",
+  "name": "dsh-zhihu-pond",
   "version": "0.1.0",
   "description": "只读信息流插件：把知乎（后续可加公众号、小红书）的公开内容读成文本交给 DSH。不评论、不点赞、不发布、不改动账号。",
   "type": "module",

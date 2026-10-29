@@ -14,3 +14,6 @@ config.local.json
 
 # SSH 密钥（只在本机）
 .git-keys/
+
+# Windows 上被当设备名的怪文件（git 的 known_hosts 坑留下的）
+NUL

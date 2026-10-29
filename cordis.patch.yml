@@ -1,13 +1,13 @@
-# dsh-feed-pond —— 只读信息流插件
+# dsh-zhihu-pond —— 只读信息流插件
 #
 # 这一行就是「挂载声明」：装好包之后，profile 的 dsh.profile.bundles 里列出
-# dsh-feed-pond 即可生效，不用手改 profile 自己的 cordis.patch.yml。
+# dsh-zhihu-pond 即可生效，不用手改 profile 自己的 cordis.patch.yml。
 #
 #   dsh plugin --profile desktop add link:<本目录>
 #
 # id 即配置命名空间、日志前缀；要和 index.js 里 export const name 对得上。
 - insert:
-    - id: feed-pond
-      name: dsh-feed-pond
+    - id: zhihu-pond
+      name: dsh-zhihu-pond
       config:
         enabled: true
